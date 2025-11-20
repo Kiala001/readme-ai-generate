@@ -1,135 +1,124 @@
 
+# ✨ Readme AI Generate
 
-# Readme AI Generate
+An intelligent Go-based tool designed to automate the creation of comprehensive `README.md` files for your projects. By analyzing your Go codebase and leveraging the power of Google Gemini AI, `Readme AI Generate` crafts detailed and informative documentation, saving you valuable time and ensuring consistent project descriptions.
 
-![Go](https://img.shields.io/badge/Go-1.20%2B-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-![Gemini API](https://img.shields.io/badge/Gemini_API-Enabled-FF6838?style=for-the-badge&logo=google&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
+## 🌟 Introdução
 
-## 📖 Introdução
+Escrever um bom `README.md` é essencial para qualquer projeto, mas muitas vezes é uma tarefa demorada e repetitiva. `Readme AI Generate` surge para resolver esse problema, fornecendo uma solução automatizada que:
 
-`Readme AI Generate` é uma ferramenta CLI poderosa e inteligente, desenvolvida em Go, projetada para automatizar e aprimorar o processo de criação de arquivos `README.md` para seus projetos Go. Ao analisar a estrutura do seu projeto, arquivos Go e funções, esta ferramenta constrói um contexto rico que é então utilizado por um modelo de inteligência artificial (Gemini) para gerar um `README` completo, detalhado e preciso.
+1.  **Analisa a estrutura e o código do seu projeto Go:** Entendendo os componentes e as funcionalidades do seu código.
+2.  **Cria um prompt inteligente:** Baseado na análise do projeto, gerando uma requisição otimizada para a IA.
+3.  **Utiliza a API Google Gemini:** Para gerar um `README.md` completo, claro e bem estruturado.
 
-**Chega de começar do zero!** Deixe o `Readme AI Generate` fazer o trabalho pesado, permitindo que você se concentre no desenvolvimento do seu código.
+Com `Readme AI Generate`, você pode focar no desenvolvimento, sabendo que a documentação será gerada de forma eficiente e profissional.
 
-### ✨ Funcionalidades
+### Como Funciona
 
-*   **Análise de Projeto:** Percorre a estrutura de diretórios do seu projeto Go, identificando arquivos `.go`.
-*   **Extração de Informações:** Analisa arquivos Go para extrair funções públicas, nomes de pacotes e comentários relevantes.
-*   **Construção de Prompt Inteligente:** Gera um prompt detalhado para a IA, incorporando as informações extraídas do projeto.
-*   **Geração de README com IA (Gemini):** Utiliza a API do Google Gemini para criar um `README.md` abrangente com base no prompt.
-*   **Listagem de Modelos AI:** Capacidade de listar os modelos Gemini disponíveis para geração.
+O fluxo de trabalho é simples:
+
+1.  Você aponta o `Readme AI Generate` para a raiz do seu projeto Go.
+2.  O programa percorre seus diretórios e arquivos, extraindo informações cruciais (nomes de arquivos, funções, comentários, estrutura geral).
+3.  Essas informações são usadas para construir um prompt detalhado e específico para o seu projeto.
+4.  O prompt é enviado à API do Google Gemini.
+5.  A IA processa o prompt e retorna um `README.md` formatado em Markdown, que é então exibido no console ou salvo em um arquivo.
 
 ## 🚀 Instalação
 
-Para instalar `Readme AI Generate`, certifique-se de ter o Go instalado (versão 1.20 ou superior).
+Para começar a usar `Readme AI Generate`, siga os passos abaixo:
+
+### Pré-requisitos
+
+*   **Go (versão 1.18 ou superior):** Certifique-se de ter o Go instalado em sua máquina. Você pode baixá-lo em [go.dev](https://go.dev/dl/).
+*   **Google Gemini API Key:** Você precisará de uma chave de API válida para acessar o modelo Gemini. Obtenha uma em [Google AI Studio](https://makersuite.google.com/app/apikey).
+
+### Passos de Instalação
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/your-username/readme-ai-generate.git # Substitua pelo caminho real do seu repositório
+    git clone https://github.com/seu-usuario/readme-ai-generate.git # Altere para o seu repositório
     cd readme-ai-generate
     ```
 
-2.  **Instale a ferramenta:**
+2.  **Instale o executável:**
     ```bash
     go install .
     ```
-    Ou, se quiser instalar a partir de qualquer diretório:
-    ```bash
-    go install github.com/your-username/readme-ai-generate@latest # Substitua pelo caminho real do seu repositório
-    ```
+    Isso instalará o executável `readme-ai-generate` no seu `$GOPATH/bin` (ou `$GOBIN`), tornando-o acessível globalmente.
 
-3.  **Configurar Chave da API Gemini:**
-    `Readme AI Generate` requer uma chave de API do Google Gemini. Obtenha sua chave no [Google AI Studio](https://aistudio.google.com/app/apikey).
-    Defina a chave como uma variável de ambiente:
-    ```bash
-    export GEMINI_API_KEY="SUA_CHAVE_API_AQUI"
-    ```
-    Recomenda-se adicionar esta linha ao seu arquivo `.bashrc`, `.zshrc` ou equivalente para que a chave esteja sempre disponível.
+OU
 
-4.  **Verificar a instalação:**
-    ```bash
-    readme-ai-generate --help
-    ```
-    Se a instalação foi bem-sucedida, você verá as opções de ajuda da ferramenta.
+1. **Execute o comando:**
+```bash
+    go get https://github.com/Kiala001/readme-ai-generate
+```
 
 ## 💡 Uso
 
-Para gerar um `README.md` para o seu projeto, navegue até o diretório raiz do projeto e execute a ferramenta.
+Para gerar um `README.md` para seu projeto, você precisa configurar sua chave de API do Gemini e então executar o comando.
 
-1.  **Navegue até o diretório do seu projeto Go:**
+1.  **Configure sua chave de API do Gemini:**
+    Defina a chave de API como uma variável de ambiente:
     ```bash
-    cd /path/to/your/go/project
+    export GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI"
+    ```
+    (Recomenda-se adicionar isso ao seu `.bashrc`, `.zshrc` ou equivalente para persistência).
+
+2.  **Execute o gerador de README:**
+    Navegue até o diretório raiz do seu projeto (o mesmo que você deseja documentar) e execute:
+    ```bash
+    readme-ai-generate .
+    ```
+    Ou, se o projeto estiver em outro lugar:
+    ```bash
+    readme-ai-generate /caminho/para/seu/projeto
     ```
 
-2.  **Certifique-se de que a variável de ambiente `GEMINI_API_KEY` esteja configurada.**
-
-3.  **Gere o README:**
+    O `README.md` gerado será impresso na saída padrão. Você pode redirecioná-lo para um arquivo:
     ```bash
-    readme-ai-generate
+    readme-ai-generate . > README.md
     ```
-    A ferramenta irá analisar seu projeto e criar um arquivo `README.md` no diretório atual.
-
-4.  **Listar modelos Gemini disponíveis (opcional):**
-    ```bash
-    readme-ai-generate models
-    ```
-    Este comando listará os modelos de IA do Gemini que podem ser usados para geração de conteúdo.
-
-**Observação:** O README gerado pela IA é um excelente ponto de partida. Sempre revise e refine-o para garantir que ele atenda perfeitamente às suas necessidades e reflita com precisão seu projeto.
 
 ## 🏗️ Estrutura do Projeto
 
-A arquitetura do `Readme AI Generate` é organizada em pacotes internos para modularidade e clareza.
+O projeto `Readme AI Generate` é organizado de forma modular, seguindo as convenções de projetos Go para facilitar a manutenção e escalabilidade.
 
 ```
 .
-├── go.mod                  # Módulos Go do projeto
-├── go.sum                  # Checksums das dependências
-├── main.go                 # Ponto de entrada principal da aplicação. Orquestra a análise do projeto e a geração do README.
-└── internal/               # Pacotes internos do projeto, não destinados ao consumo externo
-    ├── ai/                 # Lida com a interação com modelos de IA e a construção de prompts.
-    │   ├── client.go       # Cliente para interagir com a API do Google Gemini.
-    │   │   └── Funcs: GenerateReadmeWithGemini, ListAvailableModels
-    │   └── prompt.go       # Constrói o prompt detalhado para a IA.
-    │       └── Funcs: BuildPrompt
-    └── analyzer/           # Componentes responsáveis pela análise e extração de informações do projeto Go.
-        ├── extractor.go    # Extrai informações detalhadas de arquivos Go individuais.
-        │   └── Funcs: ExtractFileInfo (apenas funções públicas são consideradas)
-        └── walker.go       # Percorre a estrutura de diretórios do projeto para encontrar arquivos Go.
-            └── Funcs: WalkerProject
+├── internal/
+│   ├── ai/
+│   │   ├── client.go         # Lógica para interagir com a API do Google Gemini.
+│   │   └── prompt.go         # Funções para construir prompts inteligentes para a IA.
+│   └── analyzer/
+│       ├── extractor.go      # Extrai informações detalhadas de arquivos Go individuais.
+│       └── walker.go         # Percorre a estrutura de diretórios do projeto.
+└── main.go                 # Ponto de entrada principal da aplicação, orquestra o fluxo.
 ```
 
-### Detalhes dos Componentes:
+### Detalhes dos Módulos:
 
 *   **`main.go`**:
-    É o coração da aplicação. Ele inicia o processo, chamando o `walker` para encontrar arquivos, o `extractor` para analisá-los, o `prompt` para construir a requisição e, finalmente, o `ai client` para gerar o `README`. Comentário: "Analyzer the files in the current project directory" refere-se à orquestração dessas etapas.
+    *   Este é o coração da aplicação CLI. Ele inicializa o processo, chama os componentes do `analyzer` para coletar dados do projeto e, em seguida, utiliza os módulos do `ai` para gerar o README.
 
-*   **`internal/ai/client.go`**:
-    Este arquivo é responsável por toda a comunicação com a API do Google Gemini.
-    -   `GenerateReadmeWithGemini(prompt string)`: Envia o prompt de texto para o modelo Gemini e retorna o `README` gerado.
-    -   `ListAvailableModels()`: Consulta a API para obter uma lista dos modelos Gemini disponíveis.
+*   **`internal/ai/`**:
+    *   **`client.go`**:
+        *   `GenerateReadmeWithGemini(prompt string) (string, error)`: Envia um prompt à API do Google Gemini e retorna o `README.md` gerado.
+        *   `ListAvailableModels() ([]string, error)`: Lista os modelos de IA disponíveis através da API.
+    *   **`prompt.go`**:
+        *   `BuildPrompt(projectName string, projectInfo string) string`: Constrói um prompt detalhado para a IA, usando o nome do projeto e as informações extraídas do código.
 
-*   **`internal/ai/prompt.go`**:
-    Encapsula a lógica para formatar e construir o prompt que será enviado à IA.
-    -   `BuildPrompt(projectName string, projectInfo *analyzer.ProjectInfo)`: Recebe o nome do projeto e informações detalhadas (obtidas do `analyzer`) e constrói um prompt textual compreensível para a IA.
-
-*   **`internal/analyzer/extractor.go`**:
-    Um parser focado em arquivos Go individuais.
-    -   `ExtractFileInfo(filePath string)`: Lê um arquivo `.go`, analisa seu Abstract Syntax Tree (AST) e extrai informações cruciais como nome do pacote, dependências, funções públicas (nome, parâmetros, retornos, comentários), structs, interfaces, etc.
-
-*   **`internal/analyzer/walker.go`**:
-    Responsável por percorrer recursivamente o sistema de arquivos.
-    -   `WalkerProject(root string)`: Inicia a varredura a partir de um diretório raiz, identifica todos os arquivos `.go` e os passa para o `extractor` para análise. Retorna uma estrutura consolidada com todas as informações do projeto.
+*   **`internal/analyzer/`**:
+    *   **`extractor.go`**:
+        *   `ExtractFileInfo(filePath string) (FileInfo, error)`: Analisa um arquivo Go específico, extraindo informações relevantes como nome do arquivo, caminho, funções públicas, etc. (Note que apenas funções públicas/maiúsculas iniciais são consideradas).
+    *   **`walker.go`**:
+        *   `WalkerProject(root string) ([]FileInfo, error)`: Percorre recursivamente o diretório raiz de um projeto, coletando informações de todos os arquivos Go relevantes através do `extractor`.
 
 ## 🛠️ Tecnologias
 
-*   **Go**: Linguagem de programação principal.
-*   **Google Gemini API**: Para capacidades de geração de texto de IA.
-*   **Go Standard Library**: Utilização extensiva de pacotes como `os`, `path/filepath`, `go/ast`, `go/parser`, `go/token` para análise de código.
+*   **Go**: A linguagem de programação principal para o desenvolvimento da ferramenta.
+*   **Google Gemini API**: Utilizada para a capacidade de geração de texto inteligente.
+*   **Markdown**: O formato de saída padrão para o `README.md` gerado.
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
+Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
